@@ -9,19 +9,37 @@ import {
 } from "@material-ui/core";
 import TunerGauge from "../components/TunerGauge";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import FrequencyAnalyzer from "../core/FrequencyAnalyzer";
 
 function Tuner(props: any) {
   const [value, setValue] = useState<Number>(0);
+  const [frequency, setFrequency] = useState<Number>(0);
+  const [analyzerInstance, setAnalyzerInstance] = useState<FrequencyAnalyzer>();
 
   useEffect(() => {
-    setInterval(() => {
-      var randValue = Math.random() * 200 - 100;
-      setValue(randValue);
-    }, 2000);
+    // setInterval(() => {
+    //   var randValue = Math.random() * 200 - 100;
+    //   setValue(randValue);
+    // }, 2000);
+
+    const analyzer = new FrequencyAnalyzer(onFrequencyCallback);
+    setAnalyzerInstance(analyzer);
   }, []);
+
+  function onFrequencyCallback(freq: number) {
+    console.log(freq);
+    setFrequency(freq);
+  }
+
+  function onClickStart() {
+    if (analyzerInstance) {
+      analyzerInstance.start();
+    }
+  }
 
   return (
     <Container maxWidth="sm">
+      <Button onClick={onClickStart}>Start</Button>
       <Box pt={2}>
         <Grid container spacing={2}>
           <Grid item xs={7}>
@@ -54,7 +72,9 @@ function Tuner(props: any) {
         <Box mt={4}>
           <Grid container alignItems="center">
             <Grid item xs={4}>
-              <Typography variant="subtitle1">130Hz</Typography>
+              <Typography variant="subtitle1">
+                {frequency.toFixed(2)}Hz
+              </Typography>
             </Grid>
             <Grid item xs={4}>
               <Box textAlign="center">
