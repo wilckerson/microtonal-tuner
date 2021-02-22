@@ -7,7 +7,7 @@ function Home() {
     <div>
       Home
       {/* <TunerGauge /> */}
-      <TunerBar />
+      {/* <TunerBar /> */}
     </div>
   );
 }

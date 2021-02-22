@@ -1,19 +1,29 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GaugeObjects from "gaugeJS/dist/gauge";
 import { useWindowSize } from "@react-hook/window-size";
 
-function TunerGauge() {
+interface TunerGaugeProps {
+  value: Number;
+}
+function TunerGauge(props: TunerGaugeProps) {
   const gaugeRef = useRef<HTMLCanvasElement>(null);
-  const [windowWidth, windowHeight] = useWindowSize({ wait: 500 });
-
-  // useEffect(() => {
-  //   initGauge();
-  // }, []);
+  //const [windowWidth, windowHeight] = useWindowSize({ wait: 500 });
+  const [gaugeInstance, setGaugeInstance] = useState<any>(undefined);
 
   useEffect(() => {
     initGauge();
-    console.log("resize");
-  }, [windowWidth, windowHeight]);
+  }, []);
+
+  // useEffect(() => {
+  //   initGauge();
+  //   console.log("resize");
+  // }, [windowWidth, windowHeight]);
+
+  useEffect(() => {
+    if (gaugeInstance) {
+      gaugeInstance.set(props.value);
+    }
+  }, [props.value, gaugeInstance]);
 
   function initGauge() {
     var tunedRegion = 5;
@@ -76,36 +86,15 @@ function TunerGauge() {
     gauge.animationSpeed = 32; // set animation speed (32 is default value)
     gauge.set(0); // set actual value
 
-    setInterval(() => {
-      var randValue = Math.random() * 200 - 100;
-      gauge.set(randValue);
-      //console.log(randValue);
-    }, 5000);
+    setGaugeInstance(gauge);
   }
 
-  const currentNoteStyle: React.CSSProperties = {
-    fontSize: "2.5em",
-    fontWeight: "bold",
-  };
-
-  const currentNotePositionStyle: React.CSSProperties = {
-    position: "absolute",
-    top: "25%",
-    width: "100%",
-    textAlign: "center",
-  };
-
   return (
-    <div style={{ position: "relative" }}>
-      <canvas
-        ref={gaugeRef}
-        //  width={300} height={300}
-        style={{ width: "100%" }}
-      ></canvas>
-      <div style={currentNotePositionStyle}>
-        <div style={currentNoteStyle}>C#</div>
-      </div>
-    </div>
+    <canvas
+      ref={gaugeRef}
+      //  width={300} height={300}
+      style={{ width: "100%" }}
+    ></canvas>
   );
 }
 

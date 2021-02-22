@@ -1,6 +1,7 @@
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import React from "react";
 import Home from "./pages/Home";
+import Tuner from "./pages/Tuner";
 function App() {
   return (
     <div>
@@ -13,7 +14,7 @@ function App() {
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
-      <Home />
+      <Tuner />
     </div>
   );
 }
