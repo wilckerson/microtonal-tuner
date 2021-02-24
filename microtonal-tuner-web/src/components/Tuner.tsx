@@ -7,14 +7,16 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import TunerGauge from "../components/TunerGauge";
+import TunerGauge from "./TunerGauge";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FrequencyAnalyzer from "../core/FrequencyAnalyzer";
+import { useHistory } from "react-router-dom";
 
 function Tuner(props: any) {
   const [value, setValue] = useState<Number>(0);
   const [frequency, setFrequency] = useState<Number>(0);
   const [analyzerInstance, setAnalyzerInstance] = useState<FrequencyAnalyzer>();
+  const history = useHistory();
 
   useEffect(() => {
     // setInterval(() => {
@@ -49,6 +51,7 @@ function Tuner(props: any) {
               variant="outlined"
               endIcon={<ArrowDropDownIcon />}
               style={{ textTransform: "none" }}
+              onClick={() => history.push("/tuning")}
             >
               22EDO
             </Button>

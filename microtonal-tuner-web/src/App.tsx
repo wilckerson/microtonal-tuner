@@ -1,21 +1,21 @@
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import React from "react";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+
 import Home from "./pages/Home";
-import Tuner from "./pages/Tuner";
+import Tuning from "./pages/Tuning";
+
 function App() {
   return (
-    <div>
-      <AppBar position="static">
-        <Toolbar>
-          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
-          <Typography variant="h6">Microtonal Tuner</Typography>
-          {/* <Button color="inherit">Login</Button> */}
-        </Toolbar>
-      </AppBar>
-      <Tuner />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/tuning">
+          <Tuning />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
