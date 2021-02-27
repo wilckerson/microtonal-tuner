@@ -1,6 +1,6 @@
 TODO:
 
-- Permission screen
+- OK Permission screen
 - Tuner logic
 - Root note screen
 - TuningList screen

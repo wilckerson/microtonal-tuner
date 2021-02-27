@@ -20,6 +20,9 @@ function Tuner(props: any) {
   function onFrequencyCallback(freq: number) {
     console.log(freq);
     setFrequency(freq);
+
+    //Node name
+    //centsOff
   }
 
   return (
