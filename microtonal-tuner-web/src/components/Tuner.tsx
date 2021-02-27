@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-} from "@material-ui/core";
+import { Box, Button, Container, Grid, Typography } from "@material-ui/core";
 import TunerGauge from "./TunerGauge";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FrequencyAnalyzer from "../core/FrequencyAnalyzer";
@@ -15,17 +8,13 @@ import { useHistory } from "react-router-dom";
 function Tuner(props: any) {
   const [value, setValue] = useState<Number>(0);
   const [frequency, setFrequency] = useState<Number>(0);
-  const [analyzerInstance, setAnalyzerInstance] = useState<FrequencyAnalyzer>();
+  //const [analyzerInstance, setAnalyzerInstance] = useState<FrequencyAnalyzer>();
   const history = useHistory();
 
   useEffect(() => {
-    // setInterval(() => {
-    //   var randValue = Math.random() * 200 - 100;
-    //   setValue(randValue);
-    // }, 2000);
-
     const analyzer = new FrequencyAnalyzer(onFrequencyCallback);
-    setAnalyzerInstance(analyzer);
+    analyzer.start();
+    //setAnalyzerInstance(analyzer);
   }, []);
 
   function onFrequencyCallback(freq: number) {
@@ -33,15 +22,8 @@ function Tuner(props: any) {
     setFrequency(freq);
   }
 
-  function onClickStart() {
-    if (analyzerInstance) {
-      analyzerInstance.start();
-    }
-  }
-
   return (
-    <Container maxWidth="sm">
-      <Button onClick={onClickStart}>Start</Button>
+    <div>
       <Box pt={2}>
         <Grid container spacing={2}>
           <Grid item xs={7}>
@@ -103,7 +85,7 @@ function Tuner(props: any) {
           </Grid>
         </Grid> */}
       </Box>
-    </Container>
+    </div>
   );
 }
 

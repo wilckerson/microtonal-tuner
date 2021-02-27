@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import GaugeObjects from "gaugeJS/dist/gauge";
-import { useWindowSize } from "@react-hook/window-size";
+//import { useWindowSize } from "@react-hook/window-size";
 
 interface TunerGaugeProps {
   value: Number;

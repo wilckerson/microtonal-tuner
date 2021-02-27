@@ -1,10 +1,15 @@
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
-import React from "react";
+import { AppBar, Container, Toolbar, Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import Permission from "../components/Permission";
 import Tuner from "../components/Tuner";
-import TunerBar from "../components/TunerBar";
-import TunerGauge from "../components/TunerGauge";
+//import TunerBar from "../components/TunerBar";
+//import TunerGauge from "../components/TunerGauge";
 
 function Home() {
+  const [micAllowed, setMicAllowed] = useState(false);
+  function handleAllow() {
+    setMicAllowed(true);
+  }
   return (
     <div>
       <AppBar position="static">
@@ -17,9 +22,10 @@ function Home() {
         </Toolbar>
       </AppBar>
 
-      <Tuner />
-      {/* <TunerGauge /> */}
-      {/* <TunerBar /> */}
+      <Container maxWidth="sm">
+        {!micAllowed && <Permission onAllow={handleAllow} />}
+        {micAllowed && <Tuner />}
+      </Container>
     </div>
   );
 }
