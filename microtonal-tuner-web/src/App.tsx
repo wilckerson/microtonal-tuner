@@ -2,7 +2,8 @@ import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Tuning from "./pages/Tuning";
+import RootNote from "./pages/RootNote";
+import Tuning from "./pages/TuningList";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         </Route>
         <Route path="/tuning">
           <Tuning />
+        </Route>
+        <Route path="/rootNote">
+          <RootNote />
         </Route>
       </Switch>
     </Router>

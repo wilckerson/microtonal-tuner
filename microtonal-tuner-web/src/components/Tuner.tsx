@@ -81,6 +81,7 @@ function Tuner(props: any) {
               variant="outlined"
               endIcon={<ArrowDropDownIcon />}
               style={{ textTransform: "none" }}
+              onClick={() => history.push("/rootNote")}
             >
               {rootFreq} Hz
             </Button>

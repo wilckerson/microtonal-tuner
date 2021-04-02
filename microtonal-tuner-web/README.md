@@ -1,7 +1,7 @@
 TODO:
 
 - OK Permission screen
-- Tuner logic
+- OK Tuner logic
 - Root note screen
 - TuningList screen
 - New tuning screen

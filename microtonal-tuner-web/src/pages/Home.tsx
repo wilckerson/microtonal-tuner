@@ -1,4 +1,4 @@
-import { AppBar, Container, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Box, Container, Toolbar, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import Permission from "../components/Permission";
 import Tuner from "../components/Tuner";
@@ -6,9 +6,12 @@ import Tuner from "../components/Tuner";
 //import TunerGauge from "../components/TunerGauge";
 
 function Home() {
-  const [micAllowed, setMicAllowed] = useState(false);
+  const isMicAlreadyAllowed = window.location.hash.indexOf("micAllowed") !== -1;
+
+  const [micAllowed, setMicAllowed] = useState(isMicAlreadyAllowed);
   function handleAllow() {
     setMicAllowed(true);
+    window.location.hash = "micAllowed";
   }
   return (
     <div>
@@ -17,7 +20,9 @@ function Home() {
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
-          <Typography variant="h6">Microtonal Tuner</Typography>
+          <Box textAlign="center" style={{ width: "100%" }}>
+            <Typography variant="h6">Microtonal Tuner</Typography>
+          </Box>
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>

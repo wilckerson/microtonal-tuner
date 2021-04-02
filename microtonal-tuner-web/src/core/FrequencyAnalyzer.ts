@@ -70,6 +70,7 @@ class FrequencyAnalyzer {
     }
   }
 
+  ///Based on code used in https://tuner-online.com/
   findWaveLength(
     e: Float32Array,
     r: number,
