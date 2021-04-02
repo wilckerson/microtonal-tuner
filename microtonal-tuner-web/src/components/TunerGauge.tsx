@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import GaugeObjects from "gaugeJS/dist/gauge";
+import TuningMath from "../core/TuningMath";
 //import { useWindowSize } from "@react-hook/window-size";
 
 interface TunerGaugeProps {
-  value: Number;
+  value: number;
 }
 function TunerGauge(props: TunerGaugeProps) {
   const gaugeRef = useRef<HTMLCanvasElement>(null);
@@ -26,11 +27,12 @@ function TunerGauge(props: TunerGaugeProps) {
   }, [props.value, gaugeInstance]);
 
   function initGauge() {
-    var tunedRegion = 5;
+    var tunedRegion = TuningMath.JND_CENTS;
     var tunedRegionHeight = 10;
     var tunedRegionColor = "#00a04d";
 
-    var almostTunedRegion = 35;
+    var centsRange = 100;
+    var almostTunedRegion = centsRange * 0.39;
     var almostTunedRegionColor = "#ffa500";
     var almostTunedRegionHeight = 5;
 
@@ -69,20 +71,20 @@ function TunerGauge(props: TunerGaugeProps) {
         {
           strokeStyle: otherRegionColor,
           min: almostTunedRegion,
-          max: 100,
+          max: centsRange,
           height: otherRegionHeight,
         },
         {
           strokeStyle: otherRegionColor,
-          min: -100,
+          min: -centsRange,
           max: -almostTunedRegion,
           height: otherRegionHeight,
         },
       ],
     };
     var gauge = new GaugeObjects.Gauge(gaugeRef.current).setOptions(opts);
-    gauge.maxValue = 100; // set max gauge value
-    gauge.setMinValue(-100); // Prefer setter over gauge.minValue = 0
+    gauge.maxValue = centsRange; // set max gauge value
+    gauge.setMinValue(-centsRange); // Prefer setter over gauge.minValue = 0
     gauge.animationSpeed = 32; // set animation speed (32 is default value)
     gauge.set(0); // set actual value
 
