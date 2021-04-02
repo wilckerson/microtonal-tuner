@@ -52,6 +52,10 @@ class FrequencyAnalyzer {
     }, this.loopTime);
   }
 
+  stop() {
+    clearInterval(this.loopRef);
+  }
+
   analyzerLoop() {
     this.analyzer.getFloatTimeDomainData(this.timeDomainData);
     const waveLengthResult = this.findWaveLength(

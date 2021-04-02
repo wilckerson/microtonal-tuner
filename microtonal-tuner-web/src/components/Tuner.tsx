@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import TunerAnalyzer, { TuningData } from "../core/TunerAnalyzer";
 import { makeStyles } from "@material-ui/core/styles";
 import TuningMath from "../core/TuningMath";
+import LocalData from "../core/LocalData";
 
 const useStyles = makeStyles({
   tunedNote: {
@@ -20,16 +21,12 @@ function Tuner(props: any) {
 
   const [centsOff, setCentsOff] = useState<number>(0);
   const [noteName, setNoteName] = useState<string>("");
-  const [rootFreq, setRootFreq] = useState<number>(440);
+  const [rootFreq, setRootFreq] = useState<number>(LocalData.getRootNote());
   const [frequency, setFrequency] = useState<number>(0);
-  //const [tuningData, setTuningData] = useState<TuningData>();
-  //const [analyzerInstance, setAnalyzerInstance] = useState<FrequencyAnalyzer>();
   const history = useHistory();
 
   useEffect(() => {
     const analyzer = new FrequencyAnalyzer((freq: number) => {
-      //console.log("freq", freq);
-      //console.log("tuningData", tuningData);
       setFrequency(freq);
 
       var tuningData = TunerAnalyzer.get12EdoData(rootFreq);
@@ -46,14 +43,11 @@ function Tuner(props: any) {
       }
     });
     analyzer.start();
-    //setAnalyzerInstance(analyzer);
-  }, [rootFreq]);
 
-  // useEffect(() => {
-  //   var data = TunerAnalyzer.get12EdoData(rootFreq);
-  //   console.log("tuningData", data);
-  //   setTuningData(data);
-  // }, [rootFreq]);
+    return () => {
+      analyzer.stop();
+    };
+  }, [rootFreq]);
 
   const noteStyle =
     Math.abs(centsOff) <= TuningMath.JND_CENTS ? classes.tunedNote : undefined;
