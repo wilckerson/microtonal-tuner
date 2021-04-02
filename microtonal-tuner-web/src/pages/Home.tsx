@@ -6,12 +6,12 @@ import Tuner from "../components/Tuner";
 //import TunerGauge from "../components/TunerGauge";
 
 function Home() {
-  const isMicAlreadyAllowed = window.location.hash.indexOf("micAllowed") !== -1;
+  const isMicAlreadyAllowed = !!(window as any)["isMicAlreadyAllowed"];
 
   const [micAllowed, setMicAllowed] = useState(isMicAlreadyAllowed);
   function handleAllow() {
     setMicAllowed(true);
-    window.location.hash = "micAllowed";
+    (window as any)["isMicAlreadyAllowed"] = true;
   }
   return (
     <div>

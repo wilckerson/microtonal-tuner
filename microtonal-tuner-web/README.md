@@ -1,8 +1,8 @@
 TODO:
 
-- OK Permission screen
+- OK Permission page
 - OK Tuner logic
-- Root note screen
-- TuningList screen
-- New tuning screen
+- OK Root note page
+- OK TuningList page
+- New tuning page
 - Set notes names

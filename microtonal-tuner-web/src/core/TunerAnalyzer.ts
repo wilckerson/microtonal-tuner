@@ -1,53 +1,7 @@
-import TuningMath from "./TuningMath";
-
-export type NoteInfo = {
-  name: string;
-  ratio: number;
-  cents: number;
-  freq: number;
-};
-export type TuningData = {
-  base: number;
-  notes: NoteInfo[];
-};
+import TuningMath, { TuningData } from "./TuningMath";
 
 class TunerAnalyzer {
   //constructor() {}
-
-  static get12EdoData(rootFreq: number): TuningData {
-    var noteNames = [
-      "A",
-      "A#",
-      "B",
-      "C",
-      "C#",
-      "D",
-      "D#",
-      "E",
-      "F",
-      "F#",
-      "G",
-      "G#",
-    ];
-    var base = 2;
-    var eqt = 12;
-    var notes: any[] = [];
-    for (let i = 0; i < eqt; i++) {
-      var noteRatio = Math.pow(base, i / eqt);
-      var noteInfo = {
-        name: noteNames[i],
-        ratio: noteRatio,
-        cents: (1200 / eqt) * i,
-        freq: rootFreq * noteRatio,
-      };
-      notes.push(noteInfo);
-    }
-    var tuningData = {
-      base: base,
-      notes: notes,
-    };
-    return tuningData;
-  }
 
   static analyzeFrequency(
     tuningData: TuningData,
@@ -87,7 +41,11 @@ class TunerAnalyzer {
         ? baseCentsOff
         : ratioCentsOff;
 
-    return { noteName: closest.name, centsOff: centsOff };
+    return {
+      noteIndex: closest.index,
+      noteName: closest.name,
+      centsOff: centsOff,
+    };
   }
 }
 

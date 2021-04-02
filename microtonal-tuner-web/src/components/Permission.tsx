@@ -16,10 +16,10 @@ const Permission = (props: Props) => {
         audio: true,
         video: false,
       });
-      console.log("media", mediaStream);
+      //console.log("media", mediaStream);
       props.onAllow();
     } catch (e) {
-      console.log("catch", e);
+      //console.log("catch", e);
       setDenied(true);
     }
   }

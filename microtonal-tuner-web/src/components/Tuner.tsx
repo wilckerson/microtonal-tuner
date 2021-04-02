@@ -4,10 +4,11 @@ import TunerGauge from "./TunerGauge";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FrequencyAnalyzer from "../core/FrequencyAnalyzer";
 import { useHistory } from "react-router-dom";
-import TunerAnalyzer, { TuningData } from "../core/TunerAnalyzer";
+import TunerAnalyzer from "../core/TunerAnalyzer";
 import { makeStyles } from "@material-ui/core/styles";
 import TuningMath from "../core/TuningMath";
 import LocalData from "../core/LocalData";
+import DefaultTuningData from "../core/DefaultTuningData";
 
 const useStyles = makeStyles({
   tunedNote: {
@@ -21,25 +22,33 @@ function Tuner(props: any) {
 
   const [centsOff, setCentsOff] = useState<number>(0);
   const [noteName, setNoteName] = useState<string>("");
-  const [rootFreq, setRootFreq] = useState<number>(LocalData.getRootNote());
+  const [noteIndex, setNoteIndex] = useState<string>("");
+  const [rootFreq] = useState<number>(LocalData.getRootNote());
+  const [currentTuningIndex] = useState<number>(
+    LocalData.getCurrentTuningIndex()
+  );
+  const [tuningName, setTuningName] = useState<string>("");
   const [frequency, setFrequency] = useState<number>(0);
   const history = useHistory();
 
   useEffect(() => {
+    var tuningData = LocalData.getTuningList()[currentTuningIndex];
+    setTuningName(tuningData?.name || "");
+
     const analyzer = new FrequencyAnalyzer((freq: number) => {
       setFrequency(freq);
 
-      var tuningData = TunerAnalyzer.get12EdoData(rootFreq);
       if (tuningData !== undefined) {
-        var noteInfo = TunerAnalyzer.analyzeFrequency(
+        var analyzedNote = TunerAnalyzer.analyzeFrequency(
           tuningData,
           freq,
           rootFreq
         );
-        console.log("noteInfo", noteInfo);
+        //console.log("analyzedNote", analyzedNote);
 
-        setCentsOff(noteInfo.centsOff);
-        setNoteName(noteInfo.noteName);
+        setCentsOff(analyzedNote.centsOff);
+        setNoteName(analyzedNote.noteName);
+        setNoteIndex(analyzedNote.noteIndex.toString());
       }
     });
     analyzer.start();
@@ -47,7 +56,7 @@ function Tuner(props: any) {
     return () => {
       analyzer.stop();
     };
-  }, [rootFreq]);
+  }, [rootFreq, currentTuningIndex]);
 
   const noteStyle =
     Math.abs(centsOff) <= TuningMath.JND_CENTS ? classes.tunedNote : undefined;
@@ -65,7 +74,7 @@ function Tuner(props: any) {
               style={{ textTransform: "none" }}
               onClick={() => history.push("/tuning")}
             >
-              12EDO
+              {tuningName}
             </Button>
           </Grid>
           <Grid item xs={5}>
@@ -95,8 +104,11 @@ function Tuner(props: any) {
             <Grid item xs={4}>
               <Box textAlign="center">
                 <Typography variant="h3" className={noteStyle}>
-                  {noteName}
+                  {noteName || noteIndex}
                 </Typography>
+                {!!noteName && (
+                  <Typography variant="body2">Index: {noteIndex}</Typography>
+                )}
               </Box>
             </Grid>
             <Grid item xs={4}>
