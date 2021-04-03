@@ -1,1 +1,0 @@
-<?php header( 'Location: /microtonal-tuner-web/build/index.html' ) ;  ?>
