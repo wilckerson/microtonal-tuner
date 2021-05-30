@@ -3,7 +3,8 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import Home from "./pages/Home";
 import RootNote from "./pages/RootNote";
-import Tuning from "./pages/TuningList";
+import TuningList from "./pages/TuningList";
+import SaveTuning from "./pages/SaveTuning";
 
 function App() {
   return (
@@ -12,12 +13,15 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/tuning">
-          <Tuning />
+        <Route path="/tuningList">
+          <TuningList />
         </Route>
         <Route path="/rootNote">
           <RootNote />
         </Route>
+        {/* <Route path="/saveTuning/:tuningId">
+          <SaveTuning  />
+        </Route> */}
       </Switch>
     </Router>
   );

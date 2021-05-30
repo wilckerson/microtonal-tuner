@@ -72,7 +72,7 @@ function Tuner(props: any) {
               variant="outlined"
               endIcon={<ArrowDropDownIcon />}
               style={{ textTransform: "none" }}
-              onClick={() => history.push("/tuning")}
+              onClick={() => history.push("/tuningList")}
             >
               {tuningName}
             </Button>
