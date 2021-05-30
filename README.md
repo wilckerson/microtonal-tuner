@@ -6,3 +6,4 @@ TODO:
 - OK TuningList page
 - New tuning page
 - Set notes names
+- Custom tuning (ratios, cents, etc)
