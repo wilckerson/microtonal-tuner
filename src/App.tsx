@@ -19,9 +19,7 @@ function App() {
         <Route path="/rootNote">
           <RootNote />
         </Route>
-        {/* <Route path="/saveTuning/:tuningId">
-          <SaveTuning  />
-        </Route> */}
+        <Route path="/saveTuning/:tuningId?" component={SaveTuning} />
       </Switch>
     </Router>
   );

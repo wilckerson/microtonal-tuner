@@ -7,7 +7,9 @@ TODO:
 - [x] Tuning help content
   - [x] 12 edo tuning
   - [x] Kite tuning
-- [ ] New tuning page
+- [x] New tuning page
+- [x] Add new tuning page
+- [x] Edit tuning
 - [ ] Set notes names
 - [ ] Custom tuning (ratios, cents, etc) (Idx, note name, cents, ratio) When inform cents, calculates the ratio and vice-versa
 - [ ] Storage sync:

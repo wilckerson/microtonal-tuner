@@ -6,6 +6,7 @@ export type NoteInfo = {
   freq: number;
 };
 export type TuningData = {
+  id: string;
   name?: string;
   base: number;
   notes: NoteInfo[];
@@ -55,16 +56,17 @@ export default class TuningMath {
 
   public static getEqualTemperamentData(
     numberOfDivisions: number,
-    base: number,
+    baseInterval: number,
     rootFreq: number,
     noteNames: string[]
-  ) {
+  ): TuningData {
     var notes: any[] = [];
     for (let i = 0; i < numberOfDivisions; i++) {
-      var noteRatio = Math.pow(base, i / numberOfDivisions);
+      var noteRatio = Math.pow(baseInterval, i / numberOfDivisions);
+      var noteIndex = i + 1;
       var noteInfo: NoteInfo = {
-        index: i + 1,
-        name: noteNames[i],
+        index: noteIndex,
+        name: noteNames ? noteNames[i] : noteIndex.toString(),
         ratio: noteRatio,
         cents: this.RatioToCents(noteRatio),
         freq: rootFreq * noteRatio,
@@ -72,7 +74,8 @@ export default class TuningMath {
       notes.push(noteInfo);
     }
     var tuningData: TuningData = {
-      base: base,
+      id: "",
+      base: baseInterval,
       notes: notes,
     };
     return tuningData;

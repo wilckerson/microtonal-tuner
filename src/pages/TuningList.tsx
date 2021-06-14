@@ -37,6 +37,10 @@ function TuningList() {
     history.push("/saveTuning");
   }
 
+  function handleEditTuning(tuningId: string) {
+    history.push(`/saveTuning/${tuningId}`);
+  }
+
   return (
     <div>
       <TopBar title="Choose your tuning" />
@@ -48,12 +52,8 @@ function TuningList() {
         </Box>
         <List component="nav">
           {tuningListData.map((item, index) => (
-            <>
-              <ListItem
-                key={`${index}-${item?.name}`}
-                button
-                onClick={() => handleClick(index)}
-              >
+            <React.Fragment key={`${index}-${item?.name}`}>
+              <ListItem button onClick={() => handleClick(index)}>
                 <Box p={1}>{item.name}</Box>
                 <ListItemSecondaryAction>
                   <PopupState variant="popover" popupId="demo-popup-menu">
@@ -68,7 +68,9 @@ function TuningList() {
                         </IconButton>
 
                         <Menu {...bindMenu(popupState)}>
-                          <MenuItem onClick={popupState.close}>Edit</MenuItem>
+                          <MenuItem onClick={() => handleEditTuning(item.id)}>
+                            Edit
+                          </MenuItem>
                           <MenuItem onClick={popupState.close}>Remove</MenuItem>
                         </Menu>
                       </React.Fragment>
@@ -77,7 +79,7 @@ function TuningList() {
                 </ListItemSecondaryAction>
               </ListItem>
               <Divider />
-            </>
+            </React.Fragment>
           ))}
         </List>
       </Container>

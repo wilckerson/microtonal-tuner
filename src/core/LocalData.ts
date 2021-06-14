@@ -34,6 +34,32 @@ const LocalData = {
       return data;
     }
   },
+  saveTuningList(tuningList: TuningData[]) {
+    var tuningListText = JSON.stringify(tuningList);
+    localStorage.setItem("tuningList", tuningListText);
+  },
+  getTuningById(id: string): TuningData | undefined {
+    const tuningList = this.getTuningList();
+    var existingTuning = tuningList.find((item) => item.id === id);
+    return existingTuning;
+  },
+  saveTuning(tuning: TuningData) {
+    const tuningList = this.getTuningList();
+
+    const isExistingTuning = !!tuning.id;
+    if (isExistingTuning) {
+      //update
+      var existingTuningIndex = tuningList.findIndex(
+        (item) => item.id === tuning.id
+      );
+      tuningList[existingTuningIndex] = tuning;
+    } else {
+      //insert
+      tuning.id = new Date().getTime().toString();
+      tuningList.push(tuning);
+    }
+    this.saveTuningList(tuningList);
+  },
 };
 
 export default LocalData;

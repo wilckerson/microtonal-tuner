@@ -22,6 +22,7 @@ const tuningData = {
       rootFreq,
       noteNames
     );
+    tuningData.id = "12EDO";
     tuningData.name = "12EDO";
     tuningData.helpContentHtml = `
     <h5>Standard Guitar Tuning</h5>
@@ -79,6 +80,7 @@ const tuningData = {
       rootFreq,
       noteNames
     );
+    tuningData.id = "19EDO";
     tuningData.name = "19EDO";
     return tuningData;
   },
@@ -91,6 +93,7 @@ const tuningData = {
       rootFreq,
       noteNames
     );
+    tuningData.id = "22EDO";
     tuningData.name = "22EDO";
     return tuningData;
   },
@@ -135,6 +138,7 @@ const tuningData = {
       rootFreq,
       noteNames
     );
+    tuningData.id = "31EDO";
     tuningData.name = "31EDO";
     return tuningData;
   },
@@ -189,6 +193,7 @@ const tuningData = {
       rootFreq,
       noteNames
     );
+    tuningData.id = "41EDO";
     tuningData.name = "41EDO";
     tuningData.helpContentHtml = `
     <h5>Kite Guitar - mid-6 down major tuning</h5>

@@ -72,33 +72,41 @@ function TuningHelp() {
             interval will be divided.
           </p>
           <p>
-            <b>Interval to divide:</b> in general will be 2/1 (octave) but may
-            be a different value, for example:
-            <br /> 41 divisions of 4/1 (double octave) to make{" "}
-            <a
-              href="https://en.xen.wiki/w/The_Kite_Guitar"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Kite guitar tuning
-            </a>
-            <br /> 13 divisions of 3/1 (tritave) to make{" "}
-            <a
-              href="https://en.xen.wiki/w/Bohlen-Pierce"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Bohlen-Pierce
-            </a>
-            <br /> 9 divisions of 3/2 (perfect fifth) to make{" "}
-            <a
-              href="https://en.xen.wiki/w/Carlos_Alpha"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Wendy Carlos Alpha tuning
-            </a>
-            <br /> etc.
+            <b>Interval to divide:</b> In general it will be 2 (representing
+            2/1, the octave) but may be a different value, for example:
+            <ul>
+              <li>
+                41 divisions of 4 (representing 4/1, thedouble octave) to make{" "}
+                <a
+                  href="https://en.xen.wiki/w/The_Kite_Guitar"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Kite guitar tuning
+                </a>
+              </li>
+              <li>
+                13 divisions of 3 (representing 3/1, the tritave) to make{" "}
+                <a
+                  href="https://en.xen.wiki/w/Bohlen-Pierce"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Bohlen-Pierce
+                </a>
+              </li>
+              <li>
+                9 divisions of 1.5 (representing 3/2, the perfect fifth) to make{" "}
+                <a
+                  href="https://en.xen.wiki/w/Carlos_Alpha"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Wendy Carlos Alpha tuning
+                </a>
+              </li>
+              <li>Etc.</li>
+            </ul>
           </p>
         </DialogContent>
       </Dialog>
