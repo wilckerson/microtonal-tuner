@@ -8,12 +8,17 @@ import TunerAnalyzer from "../core/TunerAnalyzer";
 import { makeStyles } from "@material-ui/core/styles";
 import TuningMath from "../core/TuningMath";
 import LocalData from "../core/LocalData";
-import DefaultTuningData from "../core/DefaultTuningData";
+import Hidden from "@material-ui/core/Hidden";
 
 const useStyles = makeStyles({
   tunedNote: {
     color: "green",
     textShadow: "3px 3px 12px green",
+  },
+  htmlContent: {
+    "& table td": {
+      textAlign: "center",
+    },
   },
 });
 
@@ -28,12 +33,14 @@ function Tuner(props: any) {
     LocalData.getCurrentTuningIndex()
   );
   const [tuningName, setTuningName] = useState<string>("");
+  const [tuningHelpContent, setTuningHelpContent] = useState<string>("");
   const [frequency, setFrequency] = useState<number>(0);
   const history = useHistory();
 
   useEffect(() => {
     var tuningData = LocalData.getTuningList()[currentTuningIndex];
     setTuningName(tuningData?.name || "");
+    setTuningHelpContent(tuningData?.helpContentHtml || "");
 
     const analyzer = new FrequencyAnalyzer((freq: number) => {
       setFrequency(freq);
@@ -103,9 +110,17 @@ function Tuner(props: any) {
             </Grid>
             <Grid item xs={4}>
               <Box textAlign="center">
-                <Typography variant="h3" className={noteStyle}>
-                  {noteName || noteIndex}
-                </Typography>
+                <Hidden smUp>
+                  <Typography variant="h4" className={noteStyle}>
+                    {noteName || noteIndex}
+                  </Typography>
+                </Hidden>
+                <Hidden xsDown>
+                  <Typography variant="h3" className={noteStyle}>
+                    {noteName || noteIndex}
+                  </Typography>
+                </Hidden>
+
                 {!!noteName && (
                   <Typography variant="body2">Index: {noteIndex}</Typography>
                 )}
@@ -131,6 +146,12 @@ function Tuner(props: any) {
             </Box>
           </Grid>
         </Grid> */}
+        <Box>
+          <div
+            className={classes.htmlContent}
+            dangerouslySetInnerHTML={{ __html: tuningHelpContent }}
+          />
+        </Box>
       </Box>
     </div>
   );

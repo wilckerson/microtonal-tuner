@@ -23,6 +23,31 @@ const tuningData = {
       noteNames
     );
     tuningData.name = "12EDO";
+    tuningData.helpContentHtml = `
+    <h5>Standard Guitar Tuning</h5>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>6th</th>
+          <th>5th</th>
+          <th>4th</th>
+          <th>3rd</th>
+          <th>2nd</th>
+          <th>1st</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>E</td>
+          <td>A</td>
+          <td>D</td>
+          <td>G</td>
+          <td>B</td>
+          <td>E</td>
+        </tr>
+      </tbody>
+    </table>
+    `;
     return tuningData;
   },
 
@@ -165,6 +190,59 @@ const tuningData = {
       noteNames
     );
     tuningData.name = "41EDO";
+    tuningData.helpContentHtml = `
+    <h5>Kite Guitar - mid-6 down major tuning</h5>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>6th</th>
+          <th>5th</th>
+          <th>4th</th>
+          <th>3rd</th>
+          <th>2nd</th>
+          <th>1st</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>^^F</td>
+          <td>^A</td>
+          <td>C#</td>
+          <td>F</td>
+          <td>vA</td>
+          <td>^^C</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Kite Guitar - full-8 down major tuning</h5>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>8th</th>
+          <th>7th</th>
+          <th>6th</th>
+          <th>5th</th>
+          <th>4th</th>
+          <th>3rd</th>
+          <th>2nd</th>
+          <th>1st</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>        
+          <td>vD</td>
+          <td>^^F</td>
+          <td>^A</td>
+          <td>C#</td>
+          <td>F</td>
+          <td>vA</td>
+          <td>^^C</td>
+          <td>^E</td>
+        </tr>
+      </tbody>
+    </table>
+    `;
     return tuningData;
   },
 };

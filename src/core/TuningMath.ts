@@ -9,6 +9,7 @@ export type TuningData = {
   name?: string;
   base: number;
   notes: NoteInfo[];
+  helpContentHtml?: string;
 };
 
 export default class TuningMath {
