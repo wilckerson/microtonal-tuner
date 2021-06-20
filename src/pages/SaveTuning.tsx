@@ -14,7 +14,7 @@ import Alert from "@material-ui/lab/Alert";
 
 import React, { useState } from "react";
 import { RouteComponentProps, useHistory } from "react-router-dom";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/ui/TopBar";
 import LocalData from "../core/LocalData";
 import TuningHelp from "../components/TuningHelp";
 import TuningMath from "../core/TuningMath";

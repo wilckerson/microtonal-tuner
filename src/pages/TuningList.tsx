@@ -18,16 +18,29 @@ import {
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/ui/TopBar";
 import LocalData from "../core/LocalData";
 import { TuningData } from "../core/TuningMath";
 import AddIcon from "@material-ui/icons/Add";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
+import ConfirmDialog from "../components/ui/ConfirmDialog";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function TuningList() {
   const history = useHistory();
+  const [showRemoveConfirmDialog, setShowRemoveConfirmDialog] = useState(false);
+  const [tuningId, setTuningId] = useState<string>("");
+  const [tuningListData, setTuningListData] = useState<TuningData[]>();
 
-  const tuningListData = LocalData.getTuningList();
+  useEffect(() => {
+    populateList();
+  }, []);
+
+  function populateList() {
+    setTuningListData(LocalData.getTuningList());
+  }
+
   const handleClick = (index: number) => {
     LocalData.setCurrentTuningIndex(index);
     history.goBack();
@@ -41,6 +54,25 @@ function TuningList() {
     history.push(`/saveTuning/${tuningId}`);
   }
 
+  function handleOnCloseDialog() {
+    setTuningId("");
+    setShowRemoveConfirmDialog(false);
+  }
+
+  function handleRemoveTuning(tuningId: string) {
+    setTuningId(tuningId);
+    setShowRemoveConfirmDialog(true);
+  }
+
+  function handleConfirmRemoveTuning() {
+    LocalData.removeTuning(tuningId);
+
+    setTuningId("");
+    setShowRemoveConfirmDialog(false);
+
+    populateList();
+  }
+
   return (
     <div>
       <TopBar title="Choose your tuning" />
@@ -51,7 +83,7 @@ function TuningList() {
           </Button>
         </Box>
         <List component="nav">
-          {tuningListData.map((item, index) => (
+          {(tuningListData || []).map((item, index) => (
             <React.Fragment key={`${index}-${item?.name}`}>
               <ListItem button onClick={() => handleClick(index)}>
                 <Box p={1}>{item.name}</Box>
@@ -68,10 +100,22 @@ function TuningList() {
                         </IconButton>
 
                         <Menu {...bindMenu(popupState)}>
-                          <MenuItem onClick={() => handleEditTuning(item.id)}>
+                          <MenuItem
+                            onClick={() => {
+                              popupState.close();
+                              handleEditTuning(item.id);
+                            }}
+                          >
                             Edit
                           </MenuItem>
-                          <MenuItem onClick={popupState.close}>Remove</MenuItem>
+                          <MenuItem
+                            onClick={() => {
+                              popupState.close();
+                              handleRemoveTuning(item.id);
+                            }}
+                          >
+                            Remove
+                          </MenuItem>
                         </Menu>
                       </React.Fragment>
                     )}
@@ -83,6 +127,13 @@ function TuningList() {
           ))}
         </List>
       </Container>
+
+      <ConfirmDialog
+        open={showRemoveConfirmDialog}
+        onClose={handleOnCloseDialog}
+        title="Are you sure want to remove this tuning?"
+        onConfirm={handleConfirmRemoveTuning}
+      />
     </div>
   );
 }

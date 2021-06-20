@@ -60,6 +60,19 @@ const LocalData = {
     }
     this.saveTuningList(tuningList);
   },
+  removeTuning(id: string) {
+    const tuningList = this.getTuningList();
+    var existingTuningIndex = tuningList.findIndex((item) => item.id === id);
+    if (existingTuningIndex === -1) {
+      return;
+    }
+    tuningList.splice(existingTuningIndex, 1);
+    this.saveTuningList(tuningList);
+
+    if (existingTuningIndex === this.getCurrentTuningIndex()) {
+      this.setCurrentTuningIndex(0);
+    }
+  },
 };
 
 export default LocalData;

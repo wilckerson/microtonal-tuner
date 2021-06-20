@@ -10,6 +10,7 @@ TODO:
 - [x] New tuning page
 - [x] Add new tuning page
 - [x] Edit tuning
+- [ ] Remove tuning
 - [ ] Set notes names
 - [ ] Custom tuning (ratios, cents, etc) (Idx, note name, cents, ratio) When inform cents, calculates the ratio and vice-versa
 - [ ] Storage sync:
