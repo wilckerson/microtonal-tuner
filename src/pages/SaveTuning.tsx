@@ -23,7 +23,7 @@ import { useEffect } from "react";
 type TParams = { tuningId: string };
 function SaveTuning({ match }: RouteComponentProps<TParams>) {
   const history = useHistory();
-  const [tuningTypeValue, setTuningTypeValue] = useState(0);
+  const [tuningTypeValue] = useState(0);
   const [numDivisions, setNumDivisions] = useState(0);
   const [interval, setInterval] = useState(2);
   const [name, setName] = useState("");
@@ -35,23 +35,23 @@ function SaveTuning({ match }: RouteComponentProps<TParams>) {
   const tuningId = match.params.tuningId;
 
   useEffect(() => {
+    function populateTuning() {
+      if (!tuningId) {
+        return;
+      }
+
+      var tuning = LocalData.getTuningById(tuningId);
+      if (!tuning) {
+        return;
+      }
+
+      setNumDivisions(tuning.notes.length);
+      setInterval(tuning.base);
+      setName(tuning.name || "");
+    }
+
     populateTuning();
-  }, []);
-
-  const populateTuning = () => {
-    if (!tuningId) {
-      return;
-    }
-
-    var tuning = LocalData.getTuningById(tuningId);
-    if (!tuning) {
-      return;
-    }
-
-    setNumDivisions(tuning.notes.length);
-    setInterval(tuning.base);
-    setName(tuning.name || "");
-  };
+  }, [tuningId]);
 
   const handleNumDivisionsChange = (value: string) => {
     const floatValue = parseFloat(value) || 0;

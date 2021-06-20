@@ -12,14 +12,12 @@ const Permission = (props: Props) => {
 
   async function handleClick() {
     try {
-      var mediaStream = await navigator.mediaDevices.getUserMedia({
+      await navigator.mediaDevices.getUserMedia({
         audio: true,
         video: false,
       });
-      //console.log("media", mediaStream);
       props.onAllow();
     } catch (e) {
-      //console.log("catch", e);
       setDenied(true);
     }
   }

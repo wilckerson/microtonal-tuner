@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Box, Button, Container, Grid, Typography } from "@material-ui/core";
+import { useEffect, useState } from "react";
+import { Box, Button, Grid, Typography } from "@material-ui/core";
 import TunerGauge from "./TunerGauge";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FrequencyAnalyzer from "../core/FrequencyAnalyzer";

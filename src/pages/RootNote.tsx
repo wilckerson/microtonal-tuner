@@ -1,16 +1,11 @@
 import {
-  AppBar,
   Box,
   Button,
   Container,
-  IconButton,
   InputAdornment,
   TextField,
-  Toolbar,
-  Typography,
 } from "@material-ui/core";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import TopBar from "../components/ui/TopBar";
 import LocalData from "../core/LocalData";
