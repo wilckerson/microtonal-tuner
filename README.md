@@ -1,3 +1,12 @@
+# Microtonal Tuner Web
+
+This project aims to a simple way to tune instruments to microtonal scales.
+Currently is possible to tune to any equal temperant scale, other types are of tuning are comming soon.
+
+I hope it can helps microtonal community as https://www.facebook.com/groups/xenharmonic2
+
+If you have suggestions or want contribute with code it would be great.
+
 TODO:
 
 - [x] Permission page
@@ -10,8 +19,9 @@ TODO:
 - [x] New tuning page
 - [x] Add new tuning page
 - [x] Edit tuning
-- [ ] Remove tuning
-- [ ] Set notes names
+- [x] Remove tuning
+- [ ] Implement Kite note name generator for all EDOs
+- [ ] Set custom notes names
 - [ ] Custom tuning (ratios, cents, etc) (Idx, note name, cents, ratio) When inform cents, calculates the ratio and vice-versa
 - [ ] Storage sync:
   - [ ] when new versions are released with new local data, it need to merge with current users local data

@@ -196,6 +196,7 @@ const tuningData = {
     tuningData.id = "41EDO";
     tuningData.name = "41EDO";
     tuningData.helpContentHtml = `
+    <a href="https://kiteguitar.com/theory/tunings/" target="_blank">Kite Tuning</a>
     <h5>Kite Guitar - mid-6 down major tuning</h5>
     <table border="1" width="100%">
       <thead>

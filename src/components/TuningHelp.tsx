@@ -76,7 +76,7 @@ function TuningHelp() {
             2/1, the octave) but may be a different value, for example:
             <ul>
               <li>
-                41 divisions of 4 (representing 4/1, thedouble octave) to make{" "}
+                41 divisions of 4 (representing 4/1, the double octave) to make{" "}
                 <a
                   href="https://en.xen.wiki/w/The_Kite_Guitar"
                   target="_blank"

@@ -142,6 +142,9 @@ function SaveTuning({ match }: RouteComponentProps<TParams>) {
               label="Tuning type"
             >
               <MenuItem value={0}>Equal temperament</MenuItem>
+              <MenuItem value={1} disabled>
+                Other types comming soon
+              </MenuItem>
               {/* <MenuItem value={1}>Custom tuning</MenuItem> */}
             </Select>
           </FormControl>

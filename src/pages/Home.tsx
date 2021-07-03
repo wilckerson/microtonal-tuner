@@ -1,9 +1,15 @@
-import { AppBar, Box, Container, Toolbar, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Box,
+  Container,
+  Grid,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
 import React, { useState } from "react";
 import Permission from "../components/Permission";
 import Tuner from "../components/Tuner";
-//import TunerBar from "../components/TunerBar";
-//import TunerGauge from "../components/TunerGauge";
+import HeaderMenu from "../components/HeaderMenu";
 
 function Home() {
   const isMicAlreadyAllowed = !!(window as any)["isMicAlreadyAllowed"];
@@ -17,13 +23,23 @@ function Home() {
     <div>
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
-          <Box textAlign="center" style={{ width: "100%" }}>
-            <Typography variant="h6">Microtonal Tuner</Typography>
-          </Box>
-          {/* <Button color="inherit">Login</Button> */}
+          <Grid container alignItems="center">
+            <Grid item md={4} xs={1}></Grid>
+            <Grid item md={4} xs={10}>
+              <Box textAlign="center">
+                <Typography variant="h6" display="inline">
+                  Microtonal Tuner
+                </Typography>
+                &nbsp;
+                <Typography variant="caption">v1.1.0</Typography>
+              </Box>
+            </Grid>
+            <Grid item md={4} xs={1}>
+              <Box display="flex" justifyContent="flex-end">
+                <HeaderMenu />
+              </Box>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
 

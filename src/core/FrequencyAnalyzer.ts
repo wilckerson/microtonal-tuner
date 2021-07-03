@@ -8,7 +8,7 @@ class FrequencyAnalyzer {
   bitCounter: number;
   globk: number;
   onFrequencyCallback: OnFrequencyCallback;
-  loopTime = 700; //900;
+  loopTime = 500; //900;
 
   constructor(onFrequencyCallback: OnFrequencyCallback) {
     this.startTime = 0;
