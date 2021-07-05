@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import Permission from "../components/Permission";
 import Tuner from "../components/Tuner";
 import HeaderMenu from "../components/HeaderMenu";
+import pkg from "../../package.json";
 
 function Home() {
   const isMicAlreadyAllowed = !!(window as any)["isMicAlreadyAllowed"];
@@ -31,7 +32,7 @@ function Home() {
                   Microtonal Tuner
                 </Typography>
                 &nbsp;
-                <Typography variant="caption">v1.1.0</Typography>
+                <Typography variant="caption">v{pkg.version}</Typography>
               </Box>
             </Grid>
             <Grid item md={4} xs={1}>

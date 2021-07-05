@@ -1,29 +1,15 @@
 # Microtonal Tuner Web
 
-This project aims to a simple way to tune instruments to microtonal scales.
-Currently is possible to tune to any equal temperant scale, other types are of tuning are comming soon.
+https://microtonal-tuner.herokuapp.com
 
-I hope it can helps microtonal community as https://www.facebook.com/groups/xenharmonic2
+This project aims to be a simple way to tune instruments to microtonal scales, helping the microtonal community with handy tools.
+Currently, it is possible to tune to any equal temperament scale. Other types of tuning are coming soon.
 
-If you have suggestions or want contribute with code it would be great.
+⭐Please, give your feedback and be welcome to contribute with code.
 
-TODO:
+If you are new to microtonal, you can learn more at:
 
-- [x] Permission page
-- [x] Tuner logic
-- [x] Root note page
-- [x] TuningList page
-- [x] Tuning help content
-  - [x] 12 edo tuning
-  - [x] Kite tuning
-- [x] New tuning page
-- [x] Add new tuning page
-- [x] Edit tuning
-- [x] Remove tuning
-- [ ] Implement Kite note name generator for all EDOs
-- [ ] Set custom notes names
-- [ ] Custom tuning (ratios, cents, etc) (Idx, note name, cents, ratio) When inform cents, calculates the ratio and vice-versa
-- [ ] Storage sync:
-  - [ ] when new versions are released with new local data, it need to merge with current users local data
-  - [ ] Button to reset local data (with confirmation)
-- [ ] App name and logo (MicrotonalTuner, MicroTuner, µTuner, AllTuner)
+- http://xen.wiki
+- https://www.facebook.com/groups/xenharmonic2
+
+Special thanks for Kite Giedraitis and Kite guitar team for great feedbacks.

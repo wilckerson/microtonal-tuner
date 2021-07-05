@@ -143,7 +143,7 @@ function SaveTuning({ match }: RouteComponentProps<TParams>) {
             >
               <MenuItem value={0}>Equal temperament</MenuItem>
               <MenuItem value={1} disabled>
-                Other types comming soon
+                Other types coming soon
               </MenuItem>
               {/* <MenuItem value={1}>Custom tuning</MenuItem> */}
             </Select>
