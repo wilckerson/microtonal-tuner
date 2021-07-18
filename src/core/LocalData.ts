@@ -28,6 +28,7 @@ const LocalData = {
         DefaultTuningData.get12EdoData(this.getRootNote()),
         DefaultTuningData.get19EdoData(this.getRootNote()),
         DefaultTuningData.get22EdoData(this.getRootNote()),
+        DefaultTuningData.get24EdoData(this.getRootNote()),
         DefaultTuningData.get31EdoData(this.getRootNote()),
         DefaultTuningData.get41EdoData(this.getRootNote()),
       ];

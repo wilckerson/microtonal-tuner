@@ -98,6 +98,44 @@ const tuningData = {
     return tuningData;
   },
 
+  get24EdoData(rootFreq: number): TuningData {
+    var noteNames: string[] = [
+      "A",
+      "^A/vBb",
+      "A#/Bb",
+      "vB",
+      "B",
+      "^B/vC",
+      "C",
+      "^C/vDb",
+      "C#/Db",
+      "vD",
+      "D",
+      "^D/vEb",
+      "D#/Eb",
+      "vE",
+      "E",
+      "^E/vF",
+      "F",
+      "^F",
+      "F#/Gb",
+      "vG",
+      "G",
+      "^G/vAb",
+      "G#/Ab",
+      "vA",
+    ];
+    const tuningData = TuningMath.getEqualTemperamentData(
+      24,
+      2,
+      rootFreq,
+      noteNames
+    );
+    tuningData.id = "24EDO";
+    tuningData.name = "24EDO";
+    return tuningData;
+  },
+
   get31EdoData(rootFreq: number): TuningData {
     var noteNames: string[] = [
       "A",

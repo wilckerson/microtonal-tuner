@@ -64,8 +64,9 @@ function TuningHelp() {
             general, the most common tuning has been 12-tone equal temperament
             (also known as 12edo or 12-TET) which divides an octave into 12
             equal parts. Other equal temperaments divide the octave differently.
-            For example, some music has been written in 24edo (quartertones),
-            19edo and 31edo.
+            For example, some music has been written in 19edo, 22edo, 24edo
+            (quartertones), 31edo, 41edo (as the{" "}
+            <a href="https://kiteguitar.com/">Kite Guitar</a>), etc.
           </p>
           <p>
             <b>Number of divisions:</b> number of notes in the scale in wich the
@@ -75,16 +76,6 @@ function TuningHelp() {
             <b>Interval to divide:</b> In general it will be 2 (representing
             2/1, the octave) but may be a different value, for example:
             <ul>
-              <li>
-                41 divisions of 4 (representing 4/1, the double octave) to make{" "}
-                <a
-                  href="https://en.xen.wiki/w/The_Kite_Guitar"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Kite guitar tuning
-                </a>
-              </li>
               <li>
                 13 divisions of 3 (representing 3/1, the tritave) to make{" "}
                 <a
