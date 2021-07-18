@@ -12,4 +12,4 @@ If you are new to microtonal, you can learn more at:
 - http://xen.wiki
 - https://www.facebook.com/groups/xenharmonic2
 
-Special thanks for Kite Giedraitis and Kite guitar team for great feedbacks.
+Special thanks to Kite Giedraitis and the Kite guitar team for great feedbacks.
