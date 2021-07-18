@@ -18,6 +18,12 @@ const LocalData = {
   setCurrentTuningIndex(index: number) {
     localStorage.setItem("currentTuningIndex", index.toString());
   },
+  setCurrentTuningByName(name: string) {
+    const tuningList = this.getTuningList();
+    var existingTuningIdx =
+      tuningList.findIndex((item) => item.name === name) || 0;
+    localStorage.setItem("currentTuningIndex", existingTuningIdx.toString());
+  },
   getTuningList(): TuningData[] {
     try {
       const tuningListText = localStorage.getItem("tuningList") || "emptyData";

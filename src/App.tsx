@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import RootNote from "./pages/RootNote";
 import TuningList from "./pages/TuningList";
 import SaveTuning from "./pages/SaveTuning";
+import TuningRedirect from "./pages/TuningRedirect";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/tuning/:tuningName">
+          <TuningRedirect />
         </Route>
         <Route path="/tuningList">
           <TuningList />
