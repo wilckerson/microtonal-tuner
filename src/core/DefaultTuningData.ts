@@ -235,30 +235,6 @@ const tuningData = {
     tuningData.name = "41EDO";
     tuningData.helpContentHtml = `
     <a href="https://kiteguitar.com/theory/tunings/" target="_blank">Kite Tuning</a>
-    <h5>Kite Guitar - mid-6 down major tuning</h5>
-    <table border="1" width="100%">
-      <thead>
-        <tr>
-          <th>6th</th>
-          <th>5th</th>
-          <th>4th</th>
-          <th>3rd</th>
-          <th>2nd</th>
-          <th>1st</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>^^F</td>
-          <td>^A</td>
-          <td>C#</td>
-          <td>F</td>
-          <td>vA</td>
-          <td>^^C</td>
-        </tr>
-      </tbody>
-    </table>
-
     <h5>Kite Guitar - full-8 down major tuning</h5>
     <table border="1" width="100%">
       <thead>
@@ -283,6 +259,29 @@ const tuningData = {
           <td>vA</td>
           <td>^^C</td>
           <td>^E</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5>Kite Guitar - mid-6 down major tuning</h5>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>6th</th>
+          <th>5th</th>
+          <th>4th</th>
+          <th>3rd</th>
+          <th>2nd</th>
+          <th>1st</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>^^F</td>
+          <td>^A</td>
+          <td>C#</td>
+          <td>F</td>
+          <td>vA</td>
+          <td>^^C</td>
         </tr>
       </tbody>
     </table>
