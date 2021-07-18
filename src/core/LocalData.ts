@@ -21,7 +21,9 @@ const LocalData = {
   setCurrentTuningByName(name: string) {
     const tuningList = this.getTuningList();
     var existingTuningIdx =
-      tuningList.findIndex((item) => item.name === name) || 0;
+      tuningList.findIndex(
+        (item) => item.name?.toLowerCase() === name.toLowerCase()
+      ) || 0;
     localStorage.setItem("currentTuningIndex", existingTuningIdx.toString());
   },
   getTuningList(): TuningData[] {
