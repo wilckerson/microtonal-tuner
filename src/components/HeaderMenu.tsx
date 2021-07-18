@@ -51,7 +51,11 @@ function HeaderMenu() {
     },
   ];
 
-  function getMenuItem(menuItem: MenuItemData, popupState: PopupStateType) {
+  function getMenuItem(
+    menuItem: MenuItemData,
+    index: number,
+    popupState: PopupStateType
+  ) {
     const Icon = menuItem.icon;
     return (
       <MenuItem
@@ -60,6 +64,7 @@ function HeaderMenu() {
         target="_blank"
         rel="noreferrer"
         color="textPrimary"
+        key={index}
       >
         <Icon />
         &nbsp;
@@ -68,7 +73,7 @@ function HeaderMenu() {
     );
   }
 
-  function getMenuLink(menuItem: MenuItemData) {
+  function getMenuLink(menuItem: MenuItemData, index: number) {
     const Icon = menuItem.icon;
     return (
       <Button
@@ -76,6 +81,7 @@ function HeaderMenu() {
         target="_blank"
         rel="noreferrer"
         color="inherit"
+        key={index}
       >
         <Icon />
         &nbsp;
@@ -87,7 +93,7 @@ function HeaderMenu() {
   return (
     <>
       <div className={classes.sectionDesktop}>
-        {menuItems.map((menuItem) => getMenuLink(menuItem))}
+        {menuItems.map((menuItem, index) => getMenuLink(menuItem, index))}
       </div>
 
       <div className={classes.sectionMobile}>
@@ -104,7 +110,9 @@ function HeaderMenu() {
               </IconButton>
 
               <Menu {...bindMenu(popupState)}>
-                {menuItems.map((menuItem) => getMenuItem(menuItem, popupState))}
+                {menuItems.map((menuItem, index) =>
+                  getMenuItem(menuItem, index, popupState)
+                )}
               </Menu>
             </React.Fragment>
           )}
