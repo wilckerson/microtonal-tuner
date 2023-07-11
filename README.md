@@ -1,6 +1,6 @@
 # Microtonal Tuner Web
 
-https://microtonal-tuner.herokuapp.com
+https://microtonal-tuner.onrender.com/
 
 This project aims to be a simple way to tune instruments to microtonal scales, helping the microtonal community with handy tools.
 Currently, it is possible to tune to any equal temperament scale. Other types of tuning are coming soon.
