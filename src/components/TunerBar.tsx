@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Grid, Slider, Tooltip, Typography } from "@mui/material";
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 
 const thumbSize = 24;
 const useStyles = makeStyles({
@@ -79,7 +79,9 @@ function TunerBar() {
           rail: classes.sliderRail,
         }}
         valueLabelDisplay="on"
-        ValueLabelComponent={ValueLabelComponent}
+        slots={{
+          valueLabel: ValueLabelComponent,
+        }}
         disabled
         //valueLabelFormat={(value) => value + " cents"}
       />
