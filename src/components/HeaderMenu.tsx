@@ -54,7 +54,7 @@ function HeaderMenu() {
   function getMenuItem(
     menuItem: MenuItemData,
     index: number,
-    popupState: PopupStateType
+    _popupState: PopupStateType
   ) {
     const Icon = menuItem.icon;
     return (

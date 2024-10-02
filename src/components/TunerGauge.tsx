@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GaugeObjects from "gaugeJS/dist/gauge";
 import TuningMath from "../core/TuningMath";
 //import { useWindowSize } from "@react-hook/window-size";

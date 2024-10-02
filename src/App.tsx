@@ -1,6 +1,4 @@
-import React from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-
+import { Switch, Route, HashRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import RootNote from "./pages/RootNote";
 import TuningList from "./pages/TuningList";
@@ -9,7 +7,7 @@ import TuningRedirect from "./pages/TuningRedirect";
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -25,7 +23,7 @@ function App() {
         </Route>
         <Route path="/saveTuning/:tuningId?" component={SaveTuning} />
       </Switch>
-    </Router>
+    </HashRouter>
   );
 }
 

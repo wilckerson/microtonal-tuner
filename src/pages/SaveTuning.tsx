@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { RouteComponentProps, useHistory } from "react-router-dom";
 import TopBar from "../components/ui/TopBar";
 import LocalData from "../core/LocalData";

@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@material-ui/core";
-import React, { useState } from "react";
+import { useState } from "react";
 import MicIcon from "@material-ui/icons/Mic";
 import MicOffIcon from "@material-ui/icons/MicOff";
 

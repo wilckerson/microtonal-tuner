@@ -5,7 +5,6 @@ import {
   DialogActions,
   Button,
 } from "@material-ui/core";
-import React from "react";
 
 interface ConfirmDialogProps {
   title: string;

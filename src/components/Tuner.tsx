@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Tuner(props: any) {
+function Tuner() {
   const classes = useStyles();
 
   const [centsOff, setCentsOff] = useState<number>(0);

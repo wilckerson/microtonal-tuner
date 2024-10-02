@@ -7,7 +7,7 @@ import {
   IconButton,
   DialogContent,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import { useState } from "react";
 import HelpIcon from "@material-ui/icons/Help";
 import CloseIcon from "@material-ui/icons/Close";
 
