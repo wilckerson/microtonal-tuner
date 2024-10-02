@@ -12,4 +12,13 @@ If you are new to microtonal, you can learn more at:
 - http://xen.wiki
 - https://www.facebook.com/groups/xenharmonic2
 
-Special thanks to Kite Giedraitis and the Kite guitar team for great feedbacks.
+Special thanks to Kite Giedraitis and the Kite guitar team for the support.
+
+## Development
+
+This project is implemented with [Vite, React and Typescript](https://vitejs.dev).
+
+```
+npm run install
+npm run dev
+```
