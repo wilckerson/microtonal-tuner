@@ -4,7 +4,7 @@ import {
   DialogContent,
   DialogActions,
   Button,
-} from "@material-ui/core";
+} from "@mui/material";
 
 interface ConfirmDialogProps {
   title: string;
@@ -29,12 +29,7 @@ function ConfirmDialog(props: ConfirmDialogProps) {
   }
 
   return (
-    <Dialog
-      disableBackdropClick
-      disableEscapeKeyDown
-      maxWidth="xs"
-      open={props.open}
-    >
+    (<Dialog disableEscapeKeyDown maxWidth="xs" open={props.open}>
       <DialogTitle>{props.title}</DialogTitle>
       <DialogContent>{props.message}</DialogContent>
       <DialogActions>
@@ -45,7 +40,7 @@ function ConfirmDialog(props: ConfirmDialogProps) {
           {props.confirmText || "Yes"}
         </Button>
       </DialogActions>
-    </Dialog>
+    </Dialog>)
   );
 }
 

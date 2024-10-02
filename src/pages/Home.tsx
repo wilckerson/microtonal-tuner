@@ -5,7 +5,7 @@ import {
   Grid,
   Toolbar,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { useState } from "react";
 import Permission from "../components/Permission";
 import Tuner from "../components/Tuner";

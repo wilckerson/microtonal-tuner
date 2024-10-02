@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Box, Button, Grid, Typography } from "@material-ui/core";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import TunerGauge from "./TunerGauge";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import FrequencyAnalyzer from "../core/FrequencyAnalyzer";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TunerAnalyzer from "../core/TunerAnalyzer";
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import TuningMath from "../core/TuningMath";
 import LocalData from "../core/LocalData";
-import Hidden from "@material-ui/core/Hidden";
 
 const useStyles = makeStyles({
   tunedNote: {
@@ -35,7 +34,7 @@ function Tuner() {
   const [tuningName, setTuningName] = useState<string>("");
   const [tuningHelpContent, setTuningHelpContent] = useState<string>("");
   const [frequency, setFrequency] = useState<number>(0);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     var tuningData = LocalData.getTuningList()[currentTuningIndex];
@@ -79,7 +78,7 @@ function Tuner() {
               variant="outlined"
               endIcon={<ArrowDropDownIcon />}
               style={{ textTransform: "none" }}
-              onClick={() => history.push("/tuningList")}
+              onClick={() => navigate("/tuningList")}
             >
               {tuningName}
             </Button>
@@ -91,7 +90,7 @@ function Tuner() {
               variant="outlined"
               endIcon={<ArrowDropDownIcon />}
               style={{ textTransform: "none" }}
-              onClick={() => history.push("/rootNote")}
+              onClick={() => navigate("/rootNote")}
             >
               {rootFreq} Hz
             </Button>
@@ -110,16 +109,21 @@ function Tuner() {
             </Grid>
             <Grid item xs={4}>
               <Box textAlign="center">
-                <Hidden smUp>
-                  <Typography variant="h4" className={noteStyle}>
-                    {noteName || noteIndex}
-                  </Typography>
-                </Hidden>
-                <Hidden xsDown>
-                  <Typography variant="h3" className={noteStyle}>
-                    {noteName || noteIndex}
-                  </Typography>
-                </Hidden>
+                <Typography
+                  variant="h4"
+                  className={noteStyle}
+                  sx={{ display: { sm: "none", xs: "block" } }}
+                >
+                  {noteName || noteIndex}
+                </Typography>
+
+                <Typography
+                  variant="h3"
+                  className={noteStyle}
+                  sx={{ display: { xs: "none", sm: "block" } }}
+                >
+                  {noteName || noteIndex}
+                </Typography>
 
                 {!!noteName && (
                   <Typography variant="body2">Index: {noteIndex}</Typography>

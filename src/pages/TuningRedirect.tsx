@@ -1,14 +1,16 @@
 import { useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LocalData from "../core/LocalData";
 
 function TuningRedirect() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { tuningName } = useParams<{ tuningName: string }>();
 
   useEffect(() => {
-    LocalData.setCurrentTuningByName(tuningName);
-    history.replace("/");
+    if (tuningName) {
+      LocalData.setCurrentTuningByName(tuningName);
+    }
+    navigate("/", { replace: true });
   }, [history, tuningName]);
 
   return <div></div>;

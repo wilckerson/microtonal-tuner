@@ -4,14 +4,14 @@ import {
   Container,
   InputAdornment,
   TextField,
-} from "@material-ui/core";
+} from "@mui/material";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TopBar from "../components/ui/TopBar";
 import LocalData from "../core/LocalData";
 
 function RootNote() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [rootNoteValue, setRootNoteValue] = useState(LocalData.getRootNote());
 
   const handleSave = () => {
@@ -20,7 +20,7 @@ function RootNote() {
     }
 
     LocalData.setRootNote(rootNoteValue);
-    history.goBack();
+    navigate(-1);
   };
 
   return (

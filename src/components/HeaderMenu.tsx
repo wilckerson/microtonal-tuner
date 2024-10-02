@@ -1,19 +1,19 @@
 import React from "react";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import FeedbackIcon from "@material-ui/icons/Feedback";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import FeedbackIcon from "@mui/icons-material/Feedback";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { PopupState as PopupStateType } from "material-ui-popup-state/core";
 import {
   Button,
   IconButton,
   Link,
-  makeStyles,
   Menu,
   MenuItem,
   SvgIconTypeMap,
-} from "@material-ui/core";
-import { OverridableComponent } from "@material-ui/core/OverridableComponent";
+  Theme,
+} from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 type MenuItemData = {
   icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
@@ -21,7 +21,7 @@ type MenuItemData = {
   url: string;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
@@ -51,11 +51,7 @@ function HeaderMenu() {
     },
   ];
 
-  function getMenuItem(
-    menuItem: MenuItemData,
-    index: number,
-    _popupState: PopupStateType
-  ) {
+  function getMenuItem(menuItem: MenuItemData, index: number) {
     const Icon = menuItem.icon;
     return (
       <MenuItem
@@ -95,7 +91,6 @@ function HeaderMenu() {
       <div className={classes.sectionDesktop}>
         {menuItems.map((menuItem, index) => getMenuLink(menuItem, index))}
       </div>
-
       <div className={classes.sectionMobile}>
         <PopupState variant="popover" popupId="demo-popup-menu">
           {(popupState) => (
@@ -105,13 +100,14 @@ function HeaderMenu() {
                 aria-label="more"
                 color="inherit"
                 {...bindTrigger(popupState)}
+                size="large"
               >
                 <MoreVertIcon />
               </IconButton>
 
               <Menu {...bindMenu(popupState)}>
                 {menuItems.map((menuItem, index) =>
-                  getMenuItem(menuItem, index, popupState)
+                  getMenuItem(menuItem, index)
                 )}
               </Menu>
             </React.Fragment>

@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
 import HttpsRedirect from "react-https-redirect";
 import theme from "./theme";
 import App from "./App";
@@ -9,10 +9,12 @@ import App from "./App";
 ReactDOM.render(
   <StrictMode>
     <HttpsRedirect>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </StyledEngineProvider>
     </HttpsRedirect>
   </StrictMode>,
   document.querySelector("#root")
