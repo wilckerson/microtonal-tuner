@@ -9,20 +9,19 @@ import {
   Select,
   TextField,
   Typography,
-} from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
+} from "@mui/material";
+import Alert from "@mui/material/Alert";
 
 import { useState } from "react";
-import { RouteComponentProps, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import TopBar from "../components/ui/TopBar";
 import LocalData from "../core/LocalData";
 import TuningHelp from "../components/TuningHelp";
 import TuningMath from "../core/TuningMath";
 import { useEffect } from "react";
 
-type TParams = { tuningId: string };
-function SaveTuning({ match }: RouteComponentProps<TParams>) {
-  const history = useHistory();
+function SaveTuning() {
+  const navigate = useNavigate();
   const [tuningTypeValue] = useState(0);
   const [numDivisions, setNumDivisions] = useState(0);
   const [interval, setInterval] = useState(2);
@@ -32,7 +31,8 @@ function SaveTuning({ match }: RouteComponentProps<TParams>) {
   const [intervalValidationError, setIntervalValidationError] = useState("");
   const [nameValidationError, setNameValidationError] = useState("");
 
-  const tuningId = match.params.tuningId;
+  const params = useParams();
+  const tuningId = params.tuningId;
 
   useEffect(() => {
     function populateTuning() {
@@ -95,10 +95,10 @@ function SaveTuning({ match }: RouteComponentProps<TParams>) {
       []
     );
     tuning.name = name;
-    tuning.id = tuningId;
+    tuning.id = tuningId!;
     LocalData.saveTuning(tuning);
 
-    history.goBack();
+    navigate(-1);
   };
 
   const validateForm = () => {

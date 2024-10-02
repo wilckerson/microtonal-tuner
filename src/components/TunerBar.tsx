@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
-import {
-  Box,
-  Grid,
-  makeStyles,
-  Slider,
-  Tooltip,
-  Typography,
-} from "@material-ui/core";
+import { Box, Grid, Slider, Tooltip, Typography } from "@mui/material";
+
+import makeStyles from '@mui/styles/makeStyles';
 
 const thumbSize = 24;
 const useStyles = makeStyles({

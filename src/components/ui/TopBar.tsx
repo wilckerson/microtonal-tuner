@@ -1,32 +1,27 @@
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Box,
-  Typography,
-} from "@material-ui/core";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { useHistory } from "react-router-dom";
+import { AppBar, Toolbar, IconButton, Box, Typography } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate } from "react-router-dom";
 
 interface TopBarProps {
   title: string;
 }
 function TopBar(props: TopBarProps) {
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <AppBar position="static">
       <Toolbar>
         <IconButton
           edge="start"
           color="inherit"
-          onClick={() => history.goBack()}
+          onClick={() => navigate(-1)}
+          size="large"
         >
           <ArrowBackIcon />
         </IconButton>
         <Box textAlign="center" style={{ width: "100%" }}>
           <Typography variant="h6">{props.title}</Typography>
         </Box>
-        <IconButton style={{ visibility: "hidden" }}>
+        <IconButton style={{ visibility: "hidden" }} size="large">
           <ArrowBackIcon />
         </IconButton>
       </Toolbar>

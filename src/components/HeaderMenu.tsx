@@ -1,19 +1,12 @@
 import React from "react";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import FeedbackIcon from "@material-ui/icons/Feedback";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import FeedbackIcon from "@mui/icons-material/Feedback";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { PopupState as PopupStateType } from "material-ui-popup-state/core";
-import {
-  Button,
-  IconButton,
-  Link,
-  makeStyles,
-  Menu,
-  MenuItem,
-  SvgIconTypeMap,
-} from "@material-ui/core";
-import { OverridableComponent } from "@material-ui/core/OverridableComponent";
+import { Button, IconButton, Link, Menu, MenuItem, SvgIconTypeMap } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 type MenuItemData = {
   icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
@@ -90,36 +83,33 @@ function HeaderMenu() {
     );
   }
 
-  return (
-    <>
-      <div className={classes.sectionDesktop}>
-        {menuItems.map((menuItem, index) => getMenuLink(menuItem, index))}
-      </div>
+  return (<>
+    <div className={classes.sectionDesktop}>
+      {menuItems.map((menuItem, index) => getMenuLink(menuItem, index))}
+    </div>
+    <div className={classes.sectionMobile}>
+      <PopupState variant="popover" popupId="demo-popup-menu">
+        {(popupState) => (
+          <React.Fragment>
+            <IconButton
+              edge="end"
+              aria-label="more"
+              color="inherit"
+              {...bindTrigger(popupState)}
+              size="large">
+              <MoreVertIcon />
+            </IconButton>
 
-      <div className={classes.sectionMobile}>
-        <PopupState variant="popover" popupId="demo-popup-menu">
-          {(popupState) => (
-            <React.Fragment>
-              <IconButton
-                edge="end"
-                aria-label="more"
-                color="inherit"
-                {...bindTrigger(popupState)}
-              >
-                <MoreVertIcon />
-              </IconButton>
-
-              <Menu {...bindMenu(popupState)}>
-                {menuItems.map((menuItem, index) =>
-                  getMenuItem(menuItem, index, popupState)
-                )}
-              </Menu>
-            </React.Fragment>
-          )}
-        </PopupState>
-      </div>
-    </>
-  );
+            <Menu {...bindMenu(popupState)}>
+              {menuItems.map((menuItem, index) =>
+                getMenuItem(menuItem, index, popupState)
+              )}
+            </Menu>
+          </React.Fragment>
+        )}
+      </PopupState>
+    </div>
+  </>);
 }
 
 export default HeaderMenu;

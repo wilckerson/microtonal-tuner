@@ -6,24 +6,24 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemSecondaryAction,
+  ListItemButton,
   Menu,
   MenuItem,
-} from "@material-ui/core";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+} from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TopBar from "../components/ui/TopBar";
 import LocalData from "../core/LocalData";
 import { TuningData } from "../core/TuningMath";
-import AddIcon from "@material-ui/icons/Add";
+import AddIcon from "@mui/icons-material/Add";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import ConfirmDialog from "../components/ui/ConfirmDialog";
 import { useState } from "react";
 import { useEffect } from "react";
 
 function TuningList() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [showRemoveConfirmDialog, setShowRemoveConfirmDialog] = useState(false);
   const [tuningId, setTuningId] = useState<string>("");
   const [tuningListData, setTuningListData] = useState<TuningData[]>();
@@ -38,15 +38,15 @@ function TuningList() {
 
   const handleClick = (index: number) => {
     LocalData.setCurrentTuningIndex(index);
-    history.goBack();
+    navigate(-1);
   };
 
   function handleAddTuning() {
-    history.push("/saveTuning");
+    navigate("/saveTuning");
   }
 
   function handleEditTuning(tuningId: string) {
-    history.push(`/saveTuning/${tuningId}`);
+    navigate(`/saveTuning/${tuningId}`);
   }
 
   function handleOnCloseDialog() {
@@ -68,6 +68,42 @@ function TuningList() {
     populateList();
   }
 
+  const getItemSecondaryAction = (item: TuningData) => (
+    <PopupState variant="popover" popupId="demo-popup-menu">
+      {(popupState) => (
+        <React.Fragment>
+          <IconButton
+            edge="end"
+            aria-label="more"
+            {...bindTrigger(popupState)}
+            size="large"
+          >
+            <MoreVertIcon />
+          </IconButton>
+
+          <Menu {...bindMenu(popupState)}>
+            <MenuItem
+              onClick={() => {
+                popupState.close();
+                handleEditTuning(item.id);
+              }}
+            >
+              Edit
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                popupState.close();
+                handleRemoveTuning(item.id);
+              }}
+            >
+              Remove
+            </MenuItem>
+          </Menu>
+        </React.Fragment>
+      )}
+    </PopupState>
+  );
+
   return (
     <div>
       <TopBar title="Choose your tuning" />
@@ -80,49 +116,19 @@ function TuningList() {
         <List component="nav">
           {(tuningListData || []).map((item, index) => (
             <React.Fragment key={`${index}-${item?.name}`}>
-              <ListItem button onClick={() => handleClick(index)}>
-                <Box p={1}>{item.name}</Box>
-                <ListItemSecondaryAction>
-                  <PopupState variant="popover" popupId="demo-popup-menu">
-                    {(popupState) => (
-                      <React.Fragment>
-                        <IconButton
-                          edge="end"
-                          aria-label="more"
-                          {...bindTrigger(popupState)}
-                        >
-                          <MoreVertIcon />
-                        </IconButton>
-
-                        <Menu {...bindMenu(popupState)}>
-                          <MenuItem
-                            onClick={() => {
-                              popupState.close();
-                              handleEditTuning(item.id);
-                            }}
-                          >
-                            Edit
-                          </MenuItem>
-                          <MenuItem
-                            onClick={() => {
-                              popupState.close();
-                              handleRemoveTuning(item.id);
-                            }}
-                          >
-                            Remove
-                          </MenuItem>
-                        </Menu>
-                      </React.Fragment>
-                    )}
-                  </PopupState>
-                </ListItemSecondaryAction>
+              <ListItem
+                secondaryAction={getItemSecondaryAction(item)}
+                disablePadding
+              >
+                <ListItemButton onClick={() => handleClick(index)}>
+                  <Box p={1}>{item.name}</Box>
+                </ListItemButton>
               </ListItem>
               <Divider />
             </React.Fragment>
           ))}
         </List>
       </Container>
-
       <ConfirmDialog
         open={showRemoveConfirmDialog}
         onClose={handleOnCloseDialog}
