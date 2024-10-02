@@ -1,7 +1,7 @@
 type OnFrequencyCallback = (frequency: number) => void;
 
 class FrequencyAnalyzer {
-  loopRef!: NodeJS.Timeout;
+  loopRef: number;
   analyzer!: AnalyserNode;
   timeDomainData!: Float32Array;
   startTime: number;
@@ -15,6 +15,7 @@ class FrequencyAnalyzer {
     this.bitCounter = 0;
     this.globk = 1;
     this.onFrequencyCallback = onFrequencyCallback;
+    this.loopRef = -1;
   }
 
   async start() {

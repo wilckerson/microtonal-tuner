@@ -6,7 +6,6 @@ import {
   Typography,
 } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import React from "react";
 import { useHistory } from "react-router-dom";
 
 interface TopBarProps {

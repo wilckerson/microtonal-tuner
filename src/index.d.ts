@@ -17,3 +17,5 @@ declare module "gaugeJS/dist/gauge" {
   };
   export default GaugeObjects;
 }
+
+declare module "react-https-redirect"
